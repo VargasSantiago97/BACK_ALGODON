@@ -24,7 +24,7 @@ const transportesSchema = new mongoose.Schema({
     patente_acoplado: {
         type: String,
         required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('Transportes', transportesSchema, 'transportes');

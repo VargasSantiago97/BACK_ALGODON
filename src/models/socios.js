@@ -16,7 +16,7 @@ const sociosSchema = new mongoose.Schema({
     punto_venta: {
         type: Number,
         required: true
-    },
+    }
 
 });
 

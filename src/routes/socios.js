@@ -9,10 +9,13 @@ route.get('/', async function (req, res) {
     try {
         const socios = await sociosModel.find({});
 
-        return res.json({ socios });
+        return res.json({ socios, error: false });
     } catch (error) {
         console.log('Error', error);
-        return res.status(500).json({ message: err.message || 'Internal server error' });
+        return res.status(500).json({
+            error: true,
+            message: err.message || 'Internal server error'
+        });
     }
 });
 
@@ -21,13 +24,15 @@ route.get('/:id', async function (req, res) {
     try {
         const data = await sociosModel.findById(id);
 
-        if (!data) res.status(404).send({ message: "No encontrado " + id });
-        else res.send(data);
+        if (!data) res.status(404).send({ 
+            error: true,
+            message: "No encontrado " + id });
+        else res.send({ data, error: false});
 
     } catch (err) {
-        res
-            .status(500)
-            .send({ message: err.message || "Error al buscar el producto con id=" + id });
+        res.status(500).send({
+            error: true,
+            message: err.message || "Error al buscar el producto con id=" + id });
     };
 });
 
@@ -39,20 +44,23 @@ route.post('/', async function (req, res) {
         const punto_venta = req.body?.punto_venta;
 
         if (!razon_social || !cuit || !fondo_remito || !punto_venta) {
-            return res.status(400).json({ message: 'Bad request' });
+            return res.status(400).json({ message: 'Bad request', error:true });
         }
 
         const data = await sociosModel.create(req.body);
-        return res.status(201).json(data);
+        return res.status(201).json({data, error:false});
     } catch (error) {
-        console.log('Error', error);
-        return res.status(500).json({ message: error.message || 'Internal server error' });
+        console.error('Error', error);
+        return res.status(500).json({
+            error: true,
+            message: error.message || 'Internal server error' });
     }
 });
 
 route.put('/:id', async function (req, res) {
     if (!req.body) {
         return res.status(400).send({
+            error: true,
             message: "Data to update can not be empty!"
         });
     }
@@ -64,12 +72,15 @@ route.put('/:id', async function (req, res) {
 
         if (!data) {
             res.status(404).send({
+                error: true,
                 message: `No es posible actualizar ${id}.`
             });
-        } else res.send({ message: data || "Actualizado correctamente." });
+        } else res.send({ message: data || "Actualizado correctamente.", error: false });
     }
     catch (err) {
+        console.error('Error', err);
         res.status(500).send({
+            error: true,
             message: err.message || "Error actualizando el producto con id=" + id
         });
     }
@@ -78,23 +89,26 @@ route.delete('/:id', async function (req, res) {
     const id = req.params.id;
 
     try {
-        const data = await sociosModel.findByIdAndRemove(id)
+        const data = await sociosModel.deleteOne({ _id: id })
 
         if (!data) {
             res.status(404).send({
+                error: true,
                 message: `No fue posible borrar ${id}.`
             });
         } else {
             res.send({
+                error: false,
                 message: data || "Borrado correctamente!"
             });
         }
     } catch (err) {
+        console.error('Error', err);
         res.status(500).send({
+            error: true,
             message: err.message || "Error, no fue posible borrar" + id
         });
     }
-
 });
 
 

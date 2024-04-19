@@ -9,6 +9,10 @@ const establecimientosSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    id_campana: {
+        type: String,
+        required: true
+    },
     hectareas: {
         type: Number,
         required: true

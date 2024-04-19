@@ -23,4 +23,4 @@ const grupo_retiros = new mongoose.Schema({
     socios: [socios]
 });
 
-module.exports = mongoose.model('Sociedades', grupo_retiros, 'sociedades');
+module.exports = mongoose.model('Grupo_retiros', grupo_retiros, 'grupo_retiros');

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var cors = require('cors')
 const mongoose = require('mongoose');
 
 const socios = require('./routes/socios');
@@ -8,7 +9,7 @@ const destinos = require('./routes/destinos');
 const port = 3000;
 const uri = 'mongodb://127.0.0.1:27017/algodon';
 
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/socios', socios);

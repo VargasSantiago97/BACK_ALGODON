@@ -29,7 +29,6 @@ const destinosSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
 });
 
 module.exports = mongoose.model('Destinos', destinosSchema, 'destinos');
