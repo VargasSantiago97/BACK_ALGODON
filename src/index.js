@@ -3,6 +3,7 @@ const app = express();
 var cors = require('cors')
 const mongoose = require('mongoose');
 
+const articulos = require('./routes/articulos');
 const socios = require('./routes/socios');
 const destinos = require('./routes/destinos');
 
@@ -12,6 +13,7 @@ const uri = 'mongodb://127.0.0.1:27017/algodon';
 app.use(cors());
 app.use(express.json());
 
+app.use('/articulos', articulos);
 app.use('/socios', socios);
 app.use('/destinos', destinos);
 

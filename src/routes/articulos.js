@@ -1,12 +1,12 @@
 const express = require('express');
 
-const sociosModel = require('../models/socios');
+const articulosModel = require('../models/articulos');
 
 var route = express.Router();
 
 route.get('/', async function (req, res) {
     try {
-        const data = await sociosModel.find({});
+        const data = await articulosModel.find({});
 
         return res.json({ data, error: false });
 
@@ -24,7 +24,7 @@ route.get('/:id', async function (req, res) {
     const id = req.params.id;
 
     try {
-        const data = await sociosModel.findById(id);
+        const data = await articulosModel.findById(id);
 
         if (!data) {
             res.status(404).send({
@@ -46,16 +46,15 @@ route.get('/:id', async function (req, res) {
 route.post('/', async function (req, res) {
     try {
 
-        const razon_social = req.body?.razon_social;
-        const cuit = req.body?.cuit;
-        const fondo_remito = req.body?.fondo_remito;
-        const punto_venta = req.body?.punto_venta;
+        const codigo = req.body?.codigo;
+        const unidad_medida = req.body?.unidad_medida;
+        const descripcion = req.body?.descripcion;
 
-        if (!razon_social || !cuit || !fondo_remito || !punto_venta) {
+        if (!codigo || !unidad_medida || !descripcion) {
             return res.status(400).json({ message: 'Bad request', error: true });
         }
 
-        const data = await sociosModel.create(req.body);
+        const data = await articulosModel.create(req.body);
         return res.status(201).json({ data, error: false });
     } catch (error) {
         console.error('Error', error);
@@ -77,7 +76,7 @@ route.put('/:id', async function (req, res) {
     const id = req.params.id;
 
     try {
-        const data = await sociosModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false });
+        const data = await articulosModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false });
 
         if (!data) {
             res.status(404).send({
@@ -99,7 +98,7 @@ route.delete('/:id', async function (req, res) {
     const id = req.params.id;
 
     try {
-        const data = await sociosModel.deleteOne({ _id: id })
+        const data = await articulosModel.deleteOne({ _id: id })
 
         if (!data) {
             res.status(404).send({
