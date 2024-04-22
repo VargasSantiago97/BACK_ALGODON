@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const destinosSchema = new mongoose.Schema({
     razon_social: {
-        type: String,
-        required: true
+        type: String
     },
     cuit: {
         type: Number,

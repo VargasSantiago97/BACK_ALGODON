@@ -15,7 +15,7 @@ route.get('/', async function (req, res) {
 
         return res.status(500).json({
             error: true,
-            message: err.message || 'Internal server error'
+            message: error.message || 'Internal server error'
         });
     }
 });
