@@ -7,23 +7,28 @@ const transportesSchema = new mongoose.Schema({
     },
     cuit: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     domicilio: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     chofer: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     patente_chasis: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     patente_acoplado: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     }
 });
 
