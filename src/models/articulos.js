@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const articulosSchema = new mongoose.Schema({
     codigo: {
         type: String,
-        required: false
+        required: false,
+        default: ""
     },
     unidad_medida: {
         type: String,
