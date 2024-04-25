@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const establecimientosSchema = new mongoose.Schema({
     descripcion: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     id_sociedad: {
         type: String,
@@ -15,7 +16,8 @@ const establecimientosSchema = new mongoose.Schema({
     },
     hectareas: {
         type: Number,
-        required: true
+        required: true,
+        default: 1
     },
 });
 

@@ -46,11 +46,21 @@ route.get('/:id', async function (req, res) {
 route.post('/', async function (req, res) {
     try {
 
-        const codigo = req.body?.codigo;
-        const unidad_medida = req.body?.unidad_medida;
-        const descripcion = req.body?.descripcion;
+        const razon_social = req.body?.razon_social;
+        const cuit = req.body?.cuit;
+        const chofer = req.body?.chofer;
+        const patente_chasis = req.body?.patente_chasis;
 
-        if (!codigo || !unidad_medida || !descripcion) {
+
+
+
+
+        if (
+            !razon_social ||
+            !cuit ||
+            !chofer ||
+            !patente_chasis
+        ) {
             return res.status(400).json({ message: 'Bad request', error: true });
         }
 

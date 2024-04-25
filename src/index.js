@@ -44,9 +44,15 @@ app.get('*', (req, res) => {
 async function createConnectionMongoDB() {
     await mongoose.connect(uri, {
         authSource: "admin",
+        user: "",
+        pass: ""
+    });
+    /* 
+    await mongoose.connect(uri, {
+        authSource: "admin",
         user: "admin",
         pass: "1!NorteSemillas"
-    });
+    }); */
 }
 createConnectionMongoDB()
 
