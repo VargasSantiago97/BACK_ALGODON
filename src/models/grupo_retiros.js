@@ -8,10 +8,6 @@ const socios = new mongoose.Schema({
     id: {
         type: String,
         required: true
-    },
-    porcentaje: {
-        type: Number,
-        required: true
     }
 });
 

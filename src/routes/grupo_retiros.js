@@ -45,12 +45,10 @@ route.get('/:id', async function (req, res) {
 
 route.post('/', async function (req, res) {
     try {
-
-        const codigo = req.body?.codigo;
-        const unidad_medida = req.body?.unidad_medida;
+        const socios = req.body?.socios;
         const descripcion = req.body?.descripcion;
 
-        if (!codigo || !unidad_medida || !descripcion) {
+        if (!socios || !descripcion) {
             return res.status(400).json({ message: 'Bad request', error: true });
         }
 

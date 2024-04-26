@@ -42,17 +42,17 @@ app.get('*', (req, res) => {
 
 // Conexión a la base de datos
 async function createConnectionMongoDB() {
-    await mongoose.connect(uri, {
+    /* await mongoose.connect(uri, {
         authSource: "admin",
         user: "",
         pass: ""
-    });
-    /* 
+    }); */
+    
     await mongoose.connect(uri, {
         authSource: "admin",
         user: "admin",
         pass: "1!NorteSemillas"
-    }); */
+    });
 }
 createConnectionMongoDB()
 
