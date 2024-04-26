@@ -150,80 +150,80 @@ const remitos = new mongoose.Schema({
     fecha: {
         type: Date,
         required: true,
-        default: null
+        default: new Date()
     },
     origen: establecimientos,
     destino: destinos,		
     transporte: transportes,		
     observaciones: {
         type: String,
-        required: true,
+        required: false,
         default: ""
-    },		
+    },
     articulos: articulos,		
     cantidad: {
         type: Number,
         required: true,
-        default: 0
+        default: 1
     },		
     kg_origen_bruto: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_origen_tara: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_origen_neto: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_destino_bruto: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_destino_tara: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_destino_neto: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_fibra: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     kg_semilla: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     rendimiento: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     romaneo: {
         type: String,
-        required: true,
-        default: ""
+        required: false,
+        default: ''
     },
     parte: {
         type: String,
-        required: true,
+        required: false,
         default: ""
     },
     recibo: {
         type: String,
-        required: true,
+        required: false,
         default: ""
     }
 });

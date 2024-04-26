@@ -45,12 +45,19 @@ route.get('/:id', async function (req, res) {
 
 route.post('/', async function (req, res) {
     try {
+        const socio = req.body?.socio;
+        const campana = req.body?.campana;
+        const punto_venta = req.body?.punto_venta;
+        const numero_remito = req.body?.numero_remito;
+        const articulos = req.body?.articulos;
 
-        const codigo = req.body?.codigo;
-        const unidad_medida = req.body?.unidad_medida;
-        const descripcion = req.body?.descripcion;
-
-        if (!codigo || !unidad_medida || !descripcion) {
+        if (
+            !socio ||
+            !campana ||
+            !punto_venta ||
+            !numero_remito ||
+            !articulos 
+        ) {
             return res.status(400).json({ message: 'Bad request', error: true });
         }
 
