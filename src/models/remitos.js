@@ -121,11 +121,13 @@ const articulos = new mongoose.Schema({
     },
     codigo: {
         type: String,
-        required: true
+        required: false,
+        default: ''
     },
     unidad_medida: {
         type: String,
-        required: true
+        required: false,
+        default: 'UNIDAD'
     },
     descripcion: {
         type: String,
